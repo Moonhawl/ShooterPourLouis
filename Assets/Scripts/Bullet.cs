@@ -15,7 +15,12 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(collision.gameObject);
+        Enemies myEnemy = collision.gameObject.GetComponent<Enemies>();
+        if(myEnemy)
+        {
+            myEnemy.ReduceHP();
+        }
+       
         Destroy(gameObject);
         //Instantiate(degats, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
     }
